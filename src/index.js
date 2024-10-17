@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 import PlayScene from "./scenes/PlayScene";
+import PreloadScene from './scenes/PreloadScene';
+
 
 const WIDTH = 1200;
 const HEIGHT = 600;
@@ -10,7 +12,7 @@ const SHARED_CONFIG = {
 };
 
 // Array of scenes
-const SCENES = [PlayScene];
+const SCENES = [PreloadScene, PlayScene];
 const createScene = Scene => new Scene(SHARED_CONFIG);
 
 // Scenes initialization

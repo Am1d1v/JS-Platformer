@@ -3,16 +3,22 @@ import Phaser from "phaser";
 
 class PlayScene extends Phaser.Scene {
     constructor(){
-        super('PlayScene')
-    }
-
-    preload(){
-        this.load.image('sky', 'assets/sky.png');
+        super('PlayScene');
     }
 
     create(){
-        this.add.image(0, 0, 'sky').setOrigin(0);
+
+        // Render map
+        const map = this.make.tilemap({key: 'crystalWorld'});
+
+        // Tiles sets
+        const tileSet1 = map.addTilesetImage('main_lev_build_1', 'tileSet-1');
+        const tileSet2 = map.addTilesetImage('main_lev_build_2', 'tileSet-2');
+
+        map.createStaticLayer('environment', tileSet1);
+        map.createStaticLayer('platforms', tileSet2);
     }
+
 
 }
 export default PlayScene;
