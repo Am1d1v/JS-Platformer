@@ -7,16 +7,29 @@ class PlayScene extends Phaser.Scene {
     }
 
     create(){
+        const map = this.createMap();
+        this.createLayers(map);
+    }
 
+    createMap(){
         // Render map
         const map = this.make.tilemap({key: 'crystalWorld'});
 
         // Tiles sets
-        const tileSet1 = map.addTilesetImage('main_lev_build_1', 'tileSet-1');
-        const tileSet2 = map.addTilesetImage('main_lev_build_2', 'tileSet-2');
+        map.addTilesetImage('main_lev_build_1', 'tileSet-1');
 
-        map.createStaticLayer('environment', tileSet1);
-        map.createStaticLayer('platforms', tileSet2);
+        return map;
+    }
+
+    createLayers(map){
+
+        const tileSet = map.getTileset('main_lev_build_1');
+
+        // Render platform's decorations
+        map.createStaticLayer('environment', tileSet);
+
+        // Render platforms(ground)
+        map.createStaticLayer('platforms', tileSet);
     }
 
 
