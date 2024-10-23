@@ -8,10 +8,13 @@ class PlayScene extends Phaser.Scene {
 
     create(){
         const map = this.createMap();
-        this.createLayers(map);
+        const layers = this.createLayers(map);
 
         // Render player
-        this.createPlayer();
+        const player = this.createPlayer();
+
+        // Set coliision between player and platforms
+        this.physics.add.collider(player, layers.platforms);
     }
 
     createMap(){
@@ -32,7 +35,10 @@ class PlayScene extends Phaser.Scene {
         const environment = map.createStaticLayer('environment', tileSet);
 
         // Render platforms(ground)
-        const platforms = map.createDynamicLayer('platforms', tileSet);
+        const platforms = map.createStaticLayer('platforms', tileSet);
+
+        // Set collision to platforms
+        platforms.setCollisionByExclusion(-1, true);
 
         return {
             environment,
@@ -42,7 +48,13 @@ class PlayScene extends Phaser.Scene {
 
     // Render player
     createPlayer(){
-        const player = this.physics.add.sprite(100, 300, 'idle1')
+        const player = this.physics.add.sprite(100, 250, 'idle1');
+        player.body.setGravity(0, 100);
+
+        // Prevent player to cross image borders
+        player.setCollideWorldBounds(true);
+
+        return player;
     }
 
 
