@@ -9,6 +9,9 @@ class PlayScene extends Phaser.Scene {
     create(){
         const map = this.createMap();
         this.createLayers(map);
+
+        // Render player
+        this.createPlayer();
     }
 
     createMap(){
@@ -16,7 +19,7 @@ class PlayScene extends Phaser.Scene {
         const map = this.make.tilemap({key: 'crystalWorld'});
 
         // Tiles sets
-        map.addTilesetImage('main_lev_build_1', 'tileSet-1');
+        const layers = map.addTilesetImage('main_lev_build_1', 'tileSet-1');
 
         return map;
     }
@@ -26,10 +29,20 @@ class PlayScene extends Phaser.Scene {
         const tileSet = map.getTileset('main_lev_build_1');
 
         // Render platform's decorations
-        map.createStaticLayer('environment', tileSet);
+        const environment = map.createStaticLayer('environment', tileSet);
 
         // Render platforms(ground)
-        map.createStaticLayer('platforms', tileSet);
+        const platforms = map.createDynamicLayer('platforms', tileSet);
+
+        return {
+            environment,
+            platforms
+        }
+    };
+
+    // Render player
+    createPlayer(){
+        const player = this.physics.add.sprite(100, 300, 'idle1')
     }
 
 
