@@ -9,7 +9,7 @@ class PreloadScene extends Phaser.Scene {
     // Load Assets
     preload(){
         // Load default scene background & platforms
-        this.load.tilemapTiledJSON('crystalWorld', 'assets/crystal_world_map.json');
+        this.load.tilemapTiledJSON('map', 'assets/crystal_world_map.json');
         this.load.image('tileSet-1', 'assets/main_lev_build_1.png');
         this.load.image('tileSet-2', 'assets/main_lev_build_2.png');
 

@@ -14,15 +14,15 @@ class PlayScene extends Phaser.Scene {
         const player = this.createPlayer();
 
         // Set coliision between player and platforms
-        this.physics.add.collider(player, layers.platforms);
+        this.physics.add.collider(player, layers.platforms_colliders);
     }
 
     createMap(){
         // Render map
-        const map = this.make.tilemap({key: 'crystalWorld'});
+        const map = this.make.tilemap({key: 'map'});
 
         // Tiles sets
-        const layers = map.addTilesetImage('main_lev_build_1', 'tileSet-1');
+        map.addTilesetImage('main_lev_build_1', 'tileSet-1');
 
         return map;
     }
@@ -37,12 +37,16 @@ class PlayScene extends Phaser.Scene {
         // Render platforms(ground)
         const platforms = map.createStaticLayer('platforms', tileSet);
 
+        // Render platforms(ground)
+        const platforms_colliders = map.createStaticLayer('platforms_colliders', tileSet);
+  
         // Set collision to platforms
-        platforms.setCollisionByExclusion(-1, true);
+        platforms_colliders.setCollisionByExclusion(-1, true);
 
         return {
             environment,
-            platforms
+            platforms,
+            platforms_colliders
         }
     };
 
