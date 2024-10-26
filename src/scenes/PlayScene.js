@@ -13,8 +13,14 @@ class PlayScene extends Phaser.Scene {
         // Render player
         const player = this.createPlayer();
 
+        // Player's movement speed (pixels per second)
+        this.playerSpeed = 200;
+
         // Set coliision between player and platforms
         this.physics.add.collider(player, layers.platforms_colliders);
+
+        // Handle player's inputs
+        this.cursors = this.input.keyboard.createCursorKeys();
     }
 
     createMap(){
@@ -59,6 +65,19 @@ class PlayScene extends Phaser.Scene {
         player.setCollideWorldBounds(true);
 
         return player;
+    }
+
+    update(){
+        const {left, right} = this.cursors;
+
+        // Handle player's movement
+        if(left.isDown){ // Move to the left direction
+
+        } else if (right.isDown) { // Move to the right direction
+
+        } else {
+
+        }
     }
 
 
