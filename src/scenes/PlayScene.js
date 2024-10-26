@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import Player from "../entities/Player";
 
 
 class PlayScene extends Phaser.Scene {
@@ -58,7 +59,7 @@ class PlayScene extends Phaser.Scene {
 
     // Render player
     createPlayer(){
-        const player = this.physics.add.sprite(100, 250, 'idle1');
+        const player = new Player(this, 100, 250);
         player.body.setGravity(0, 100);
 
         // Prevent player to cross image borders
