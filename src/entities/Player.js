@@ -29,7 +29,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     }
 
-    preUpdate(){
+    preUpdate(time, delta){
+        super.preUpdate(time, delta)
         const {left, right} = this.cursors;
 
         // Handle player's movement

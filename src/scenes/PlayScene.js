@@ -12,13 +12,13 @@ class PlayScene extends Phaser.Scene {
         const layers = this.createLayers(map);
 
         // Render player
-        this.player = this.createPlayer();
+        const player = this.createPlayer();
 
         // Player's movement speed (pixels per second)
         this.playerSpeed = 180;
 
         // Set coliision between player and platforms
-        this.physics.add.collider(this.player, layers.platforms_colliders);
+        this.physics.add.collider(player, layers.platforms_colliders);
 
     }
 
