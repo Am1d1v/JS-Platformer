@@ -59,13 +59,7 @@ class PlayScene extends Phaser.Scene {
 
     // Render player
     createPlayer(){
-        const player = new Player(this, 100, 250);
-        player.body.setGravity(0, 100);
-
-        // Prevent player to cross image borders
-        player.setCollideWorldBounds(true);
-
-        return player;
+        return new Player(this, 100, 250);
     }
 
     update(){
