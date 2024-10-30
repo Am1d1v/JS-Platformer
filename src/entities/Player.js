@@ -12,6 +12,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.cursors = this.scene.input.keyboard.createCursorKeys();
         
         this.init();
+        this.initEvents();
     }
 
     init(){
@@ -29,8 +30,12 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     }
 
-    preUpdate(time, delta){
-        super.preUpdate(time, delta)
+    initEvents(){
+        this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
+    }
+
+    // Update sprite's animations
+    update(){
         const {left, right} = this.cursors;
 
         // Handle player's movement
