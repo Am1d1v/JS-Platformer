@@ -44,9 +44,19 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         // Handle player's movement
         if(left.isDown){ // Move to the left direction
+
             this.setVelocityX(-this.playerSpeed);
+
+            // Flip player's sprite on X axis sheet depending on movement direction
+            this.setFlipX(true);
+            
         } else if (right.isDown) { // Move to the right direction
+
             this.setVelocityX(this.playerSpeed);
+
+            // Flip player's sprite on X axis sheet depending on movement direction
+            this.setFlipX(false);
+
         } else {
             // Stay on the same spot
             this.setVelocityX(0);
@@ -56,6 +66,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         // Switching between idle & running animations
         this.body.velocity.x === 0 ? this.play('idle', true) : this.play('run', true)
+
     }
 }
 export default Player;
