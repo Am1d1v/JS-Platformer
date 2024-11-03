@@ -29,7 +29,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         // Prevent player to cross image borders
         this.setCollideWorldBounds(true);
 
-        // Player's movement aniamtion
+        // Player's movement animation
         initAnimation(this.scene.anims);
 
     }
@@ -52,7 +52,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             this.setVelocityX(0);
         }   
 
-        this.play('run', true);
+        this.play('idle', true);
     }
 }
 export default Player;
