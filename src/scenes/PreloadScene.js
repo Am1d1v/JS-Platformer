@@ -17,9 +17,10 @@ class PreloadScene extends Phaser.Scene {
         //this.load.image('idle1', 'assets/player/movements/idle01.png');
 
         // Load player's movement animation
-        this.load.spritesheet('playerMoveSprite', 'assets/player/move_sprite.png', {
-            frameWidth: 64,
-            frameHeight: 38
+        this.load.spritesheet('playerMoveSprite', 'assets/player/move_sprite_1.png', {
+            frameWidth: 32,
+            frameHeight: 38,
+            spacing: 32
         });
     };
 

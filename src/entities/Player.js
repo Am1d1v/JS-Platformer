@@ -3,7 +3,7 @@ import Phaser from "phaser";
 
 class Player extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y){
-        super(scene, x, y, 'idle1');
+        super(scene, x, y, 'playerMoveSprite');
 
         scene.add.existing(this);
         scene.physics.add.existing(this);
@@ -28,6 +28,15 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         // Prevent player to cross image borders
         this.setCollideWorldBounds(true);
 
+        // Player's movement aniamtion
+        this.scene.anims.create({
+            key: 'run',
+            frames: this.scene.anims.generateFrameNumbers('playerMoveSprite', {
+                start: 9,
+                end: 16
+            })
+        });
+
     }
 
     initEvents(){
@@ -47,6 +56,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             // Stay on the same spot
             this.setVelocityX(0);
         }   
+
+        this.play('run', true);
     }
 }
 export default Player;
