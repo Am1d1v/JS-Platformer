@@ -14,7 +14,13 @@ class PreloadScene extends Phaser.Scene {
         this.load.image('tileSet-2', 'assets/main_lev_build_2.png');
 
         // Load player's idle sprite
-        this.load.image('idle1', 'assets/player/movements/idle01.png');
+        //this.load.image('idle1', 'assets/player/movements/idle01.png');
+
+        // Load player's movement animation
+        this.load.spritesheet('playerMoveSprite', 'assets/player/move_sprite.png', {
+            frameWidth: 64,
+            frameHeight: 38
+        });
     };
 
     create(){
