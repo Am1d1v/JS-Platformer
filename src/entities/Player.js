@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import initAnimation from './PlayerAnimations';
 
 
 class Player extends Phaser.Physics.Arcade.Sprite{
@@ -29,15 +30,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.setCollideWorldBounds(true);
 
         // Player's movement aniamtion
-        this.scene.anims.create({
-            key: 'run',
-            frames: this.scene.anims.generateFrameNumbers('playerMoveSprite', {
-                start: 11,
-                end: 15
-            }),
-            frameRate: 10,
-            repeat: -1
-        });
+        initAnimation(this.scene.anims);
 
     }
 
