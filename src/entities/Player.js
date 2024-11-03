@@ -21,7 +21,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         const gravity = 100;
 
         // Player X axis movement speed
-        this.playerSpeed = 100
+        this.playerSpeed = 180
 
         this.body.setGravityY(gravity);
 
@@ -32,9 +32,11 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.scene.anims.create({
             key: 'run',
             frames: this.scene.anims.generateFrameNumbers('playerMoveSprite', {
-                start: 9,
-                end: 16
-            })
+                start: 11,
+                end: 15
+            }),
+            frameRate: 10,
+            repeat: -1
         });
 
     }
