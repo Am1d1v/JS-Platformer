@@ -30,8 +30,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         // Jumps counter. 
         this.jumpCount = 0;
 
-        // How many jumps available in the air
-        this.consecutiveJumps = 10;
+        // How many jumps available in the air(After first jump)
+        this.consecutiveJumps = 1;
 
         // Prevent player to cross image borders
         this.setCollideWorldBounds(true);
@@ -51,6 +51,12 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         // Player in on the floor/ground/platform
         const isOnFloor = this.body.onFloor();
+
+        // Check that space bar was presse only 1 time
+        const isSpaceJustDown = Phaser.Input.Keyboard.JustDown(space);
+
+        // Check that up key was presse only 1 time
+        const isUpJustDown = Phaser.Input.Keyboard.JustDown(up);
 
         // Handle player's movement X axis
         if(left.isDown){ // Move to the left direction
@@ -73,7 +79,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         }   
 
         // Jumping. Decreasing player's Y axis
-        if((isOnFloor || this.jumpCount < this.consecutiveJumps) && (space.isDown || up.isDown)){
+        if((isOnFloor || this.jumpCount < this.consecutiveJumps) && (isSpaceJustDown || isUpJustDown)){
             this.setVelocityY(-500);
             this.jumpCount += 1;
             console.log(this.jumpCount);
