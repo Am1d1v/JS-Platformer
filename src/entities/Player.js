@@ -19,7 +19,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
     init(){
 
         // Gravity params
-        const gravity = 100;
+        const gravity = 600;
 
         // Player X axis movement speed
         this.playerSpeed = 180
@@ -42,7 +42,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
     update(){
         const {left, right, space, up} = this.cursors;
 
-        // Player in on the floor/ground
+        // Player in on the floor/ground/platform
         const isOnFloor = this.body.onFloor();
 
         // Handle player's movement X axis
@@ -67,7 +67,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         // Jumping. Decreasing player's Y axis
         if( isOnFloor && (space.isDown || up.isDown)){
-            this.setVelocityY(-100);
+            this.setVelocityY(-500);
         }
 
         // Switching between idle & running animations
