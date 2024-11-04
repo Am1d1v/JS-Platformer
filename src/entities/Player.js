@@ -40,9 +40,9 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     // Update sprite's animations
     update(){
-        const {left, right} = this.cursors;
+        const {left, right, space} = this.cursors;
 
-        // Handle player's movement
+        // Handle player's movement X axis
         if(left.isDown){ // Move to the left direction
 
             this.setVelocityX(-this.playerSpeed);
@@ -62,7 +62,10 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             this.setVelocityX(0);
         }   
 
-        this.play('idle', true)
+        // Jumping
+        if(space.isDown){
+            this.setVelocityY(-100);
+        }
 
         // Switching between idle & running animations
         this.body.velocity.x === 0 ? this.play('idle', true) : this.play('run', true)
