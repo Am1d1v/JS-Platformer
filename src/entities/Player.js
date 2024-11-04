@@ -24,7 +24,14 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         // Player X axis movement speed
         this.playerSpeed = 180
 
+        // Set gravity to player
         this.body.setGravityY(gravity);
+
+        // Jumps counter. 
+        this.jumpCount = 0;
+
+        // How many jumps available in the air
+        this.consecutiveJumps = 10;
 
         // Prevent player to cross image borders
         this.setCollideWorldBounds(true);
@@ -66,9 +73,14 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         }   
 
         // Jumping. Decreasing player's Y axis
-        if( isOnFloor && (space.isDown || up.isDown)){
+        if((isOnFloor || this.jumpCount < this.consecutiveJumps) && (space.isDown || up.isDown)){
             this.setVelocityY(-500);
+            this.jumpCount += 1;
+            console.log(this.jumpCount);
         }
+
+        // Set jump counter to 0 if player is on the ground
+        if(isOnFloor) this.jumpCount = 0;
 
         // Switching between idle & running animations
         this.body.velocity.x === 0 ? this.play('idle', true) : this.play('run', true)
