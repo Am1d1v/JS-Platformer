@@ -40,7 +40,10 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     // Update sprite's animations
     update(){
-        const {left, right, space} = this.cursors;
+        const {left, right, space, up} = this.cursors;
+
+        // Player in on the floor/ground
+        const isOnFloor = this.body.onFloor();
 
         // Handle player's movement X axis
         if(left.isDown){ // Move to the left direction
@@ -62,8 +65,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             this.setVelocityX(0);
         }   
 
-        // Jumping
-        if(space.isDown){
+        // Jumping. Decreasing player's Y axis
+        if( isOnFloor && (space.isDown || up.isDown)){
             this.setVelocityY(-100);
         }
 
