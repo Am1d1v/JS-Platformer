@@ -24,4 +24,15 @@ export default (anims) => {
         repeat: -1
     });
 
+    // Player's jump animation
+    anims.create({
+        key: 'jump',
+        frames: anims.generateFrameNumbers('playerMoveSprite', {
+            start: 17,
+            end: 23
+        }),
+        frameRate: 10,
+        repeat: -1
+    });
+
 };
