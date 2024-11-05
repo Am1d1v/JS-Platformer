@@ -18,7 +18,9 @@ class PlayScene extends Phaser.Scene {
         this.playerSpeed = 180;
 
         // Set collision between player and platforms
-        player.addCollider(layers.platforms_colliders);
+        this.createPlayerColliders(player, {colliders: {
+            platformColliders: layers.platforms_colliders
+        }});
 
     }
 
@@ -58,6 +60,10 @@ class PlayScene extends Phaser.Scene {
     // Render player
     createPlayer(){
         return new Player(this, 100, 250);
+    }
+
+    createPlayerColliders(player, {colliders}){
+        player.addCollider(colliders.platforms_colliders);
     }
 
 }
