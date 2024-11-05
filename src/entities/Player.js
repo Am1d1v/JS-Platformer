@@ -83,7 +83,6 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             this.setVelocityY(-500);
             this.play('jump');
             this.jumpCount += 1;
-            console.log(this.jumpCount);
         }
 
         // Switching between idle & running animations
@@ -98,9 +97,9 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         
     }
 
-    // Set collision between player and platforms
-    addCollider(){
-        this.physics.add.collider(this, this.layers.platforms_colliders);
+    // Set collision between player and object
+    addCollider(collidingObject, callback){
+        this.scene.physics.add.collider(this, collidingObject, callback, null, this);
     };
 
 }
