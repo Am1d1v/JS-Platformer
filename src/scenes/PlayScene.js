@@ -63,7 +63,7 @@ class PlayScene extends Phaser.Scene {
     }
 
     createPlayerColliders(player, {colliders}){
-        player.addCollider(colliders.platforms_colliders);
+        player.addCollider(colliders.platformColliders);
     }
 
 }
