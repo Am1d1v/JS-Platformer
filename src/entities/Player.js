@@ -86,17 +86,22 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             console.log(this.jumpCount);
         }
 
-        // Set jump counter to 0 if player is on the ground
-        if(isOnFloor) this.jumpCount = 0;
-
         // Switching between idle & running animations
         if(isOnFloor){
+            // Set jump counter to 0 if player is on the ground
+            if(isOnFloor) this.jumpCount = 0;
+
             this.body.velocity.x === 0 ? this.play('idle', true) : this.play('run', true);
         } else {
             this.play('jump');
         }
         
-
     }
+
+    // Set collision between player and platforms
+    addCollider(){
+        this.physics.add.collider(this, this.layers.platforms_colliders);
+    };
+
 }
 export default Player;
