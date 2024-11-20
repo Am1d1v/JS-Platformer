@@ -74,11 +74,14 @@ class PlayScene extends Phaser.Scene {
     // Setup Following Camera on Player
     setupFollowUpCameraOn(player){
 
-        const {height, width, mapOffset} = this.config;
+        const {height, width, mapOffset, zoomFactor} = this.config;
+
+        // Fall camera effect 
+        this.physics.world.setBounds(0, 0, width + mapOffset, height + 300);
 
         // Camera boundary, camera stop following after cross boundary 
-        this.cameras.main.setBounds(0, 0, width + mapOffset, height);
-        
+        this.cameras.main.setBounds(0, 0, width + mapOffset, height).setZoom(zoomFactor);
+
         this.cameras.main.startFollow(player);
     }
 
