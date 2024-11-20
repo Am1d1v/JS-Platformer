@@ -6,8 +6,10 @@ import PreloadScene from './scenes/PreloadScene';
 const WIDTH = 1200;
 const HEIGHT = 600;
 
+const MAP_WIDTH = 1600;
+
 const SHARED_CONFIG = {
-  width: WIDTH,
+  width: document.body.offsetWidth,
   height: HEIGHT,
 };
 
