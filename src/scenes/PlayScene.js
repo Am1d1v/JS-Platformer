@@ -3,8 +3,10 @@ import Player from "../entities/Player";
 
 
 class PlayScene extends Phaser.Scene {
-    constructor(){
+    constructor(config){
         super('PlayScene');
+
+        this.config = config;
     }
 
     create(){
@@ -71,6 +73,12 @@ class PlayScene extends Phaser.Scene {
 
     // Setup Following Camera on Player
     setupFollowUpCameraOn(player){
+
+        const {height, width, mapOffset} = this.config;
+
+        // Camera boundary, camera stop following after cross boundary 
+        this.cameras.main.setBounds(0, 0, width + mapOffset, height);
+        
         this.cameras.main.startFollow(player);
     }
 
