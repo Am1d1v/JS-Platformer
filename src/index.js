@@ -3,13 +3,13 @@ import PlayScene from "./scenes/PlayScene";
 import PreloadScene from './scenes/PreloadScene';
 
 
-const WIDTH = 1200;
+const WIDTH = document.body.offsetWidth;
 const HEIGHT = 600;
-
 const MAP_WIDTH = 1600;
 
 const SHARED_CONFIG = {
-  width: document.body.offsetWidth,
+  mapOffset: MAP_WIDTH > WIDTH ? MAP_WIDTH - WIDTH : 0,
+  width: WIDTH,
   height: HEIGHT,
 };
 
