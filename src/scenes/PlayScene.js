@@ -16,7 +16,7 @@ class PlayScene extends Phaser.Scene {
         const playerZones = this.getPlayerZones(layers.playerZones);
 
         // Render player
-        const player = this.createPlayer();
+        const player = this.createPlayer(playerZones);
 
         // Player's movement speed (pixels per second)
         this.playerSpeed = 180;
@@ -69,8 +69,8 @@ class PlayScene extends Phaser.Scene {
     };
 
     // Render player
-    createPlayer(){
-        return new Player(this, 100, 250);
+    createPlayer({start}){
+        return new Player(this, start.x, start.y);
     }
 
     createPlayerColliders(player, {colliders}){
