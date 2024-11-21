@@ -13,6 +13,8 @@ class PlayScene extends Phaser.Scene {
         const map = this.createMap();
         const layers = this.createLayers(map);
 
+        const playerZones = this.getPlayerZones(layers.playerZones);
+
         // Render player
         const player = this.createPlayer();
 
@@ -52,8 +54,8 @@ class PlayScene extends Phaser.Scene {
         // Render platforms(ground)
         const platforms_colliders = map.createStaticLayer('platforms_colliders', tileSet);
 
-        // Player zones
-        const playerZone = map.getObjectLayer('player_zones').objects;
+        // Player zones(Spawn Point)
+        const playerZones = map.getObjectLayer('player_zones');
   
         // Set collision to platforms
         platforms_colliders.setCollisionByExclusion(-1, true);
@@ -62,7 +64,7 @@ class PlayScene extends Phaser.Scene {
             environment,
             platforms,
             platforms_colliders,
-            playerZone
+            playerZones
         }
     };
 
@@ -87,6 +89,15 @@ class PlayScene extends Phaser.Scene {
         this.cameras.main.setBounds(0, 0, width + mapOffset, height).setZoom(zoomFactor);
 
         this.cameras.main.startFollow(player);
+    }
+
+    getPlayerZones(playeZonesLayer){
+        const playerZones = playeZonesLayer.objects;
+        
+        return {
+            start: playerZones[0],
+            end: playerZones[1]
+        }
     }
 
 }
