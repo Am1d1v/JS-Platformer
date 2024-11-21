@@ -96,8 +96,6 @@ class PlayScene extends Phaser.Scene {
 
     getPlayerZones(playeZonesLayer){
         const playerZones = playeZonesLayer.objects;
-        
-        console.log(playerZones);
 
         return {
             start: playerZones.find(zone => zone.name === "startZone"),
@@ -108,7 +106,8 @@ class PlayScene extends Phaser.Scene {
     // End of the level
     createEndOfLevel({end}){
         this.physics.add.sprite(end.x, end.y, 'end')
-            .setSize(5, this.config.height)
+            .setSize(5, 200)
+            .setOrigin(0.5, 1)
     }
 
 }
