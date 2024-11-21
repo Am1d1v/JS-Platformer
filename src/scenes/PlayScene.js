@@ -94,9 +94,11 @@ class PlayScene extends Phaser.Scene {
     getPlayerZones(playeZonesLayer){
         const playerZones = playeZonesLayer.objects;
         
+        console.log(playerZones);
+
         return {
-            start: playerZones[0],
-            end: playerZones[1]
+            start: playerZones.find(zone => zone.name === "startZone"),
+            end: playerZones.find(zone => zone.name === "endZone")
         }
     }
 
